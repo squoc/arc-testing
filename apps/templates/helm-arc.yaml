@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-arc
+  namespace: arc-deploy
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+     argocd.argoproj.io/sync-wave: "3"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ .Values.spec.OPENSHIFT_NAMESPACE }}
+  project: default
+  source:
+    path: helm-arc
+    repoURL: https://github.boschdevcloud.com/NYQ5HC/bosch-it-up
+    targetRevision: HEAD
+    helm:
+      releaseName: "{{ .Values.spec.OPENSHIFT_NAMESPACE }}"
+      # extra params will take precedence over values.yaml
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
+    automated:
+      selfHeal: true
+      prune: true

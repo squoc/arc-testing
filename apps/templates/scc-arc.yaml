@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: system:openshift:scc:privileged
+  namespace: "{{ .Values.spec.OPENSHIFT_NAMESPACE }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:openshift:scc:privileged
+
+subjects:
+- kind: ServiceAccount
+  name:  "{{ .Values.spec.OPENSHIFT_NAMESPACE }}"
+  namespace: "{{ .Values.spec.OPENSHIFT_NAMESPACE }}"

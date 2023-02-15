@@ -1,0 +1,9 @@
+spec:
+  OPENSHIFT_NAMESPACE: test
+  # GITHUB_URL: test_url
+  # GHE_TOKEN: test_token
+
+runnerConfig:
+  RUNNER_LABEL: boschitup
+  RUNNER_ID: 1
+  # AUTOSCALER: true
