@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: arc-runner-deploy-app
+  name: arc-runner-app
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   annotations:
@@ -14,7 +14,7 @@ spec:
   project: default
   source:
     path: runner-deploy
-    repoURL: https://github.boschdevcloud.com/NYQ5HC/bosch-it-up
+    repoURL: https://github.com/squoc/arc-testing
     targetRevision: HEAD
 
   syncPolicy:
