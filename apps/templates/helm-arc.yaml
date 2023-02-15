@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: helm-arc
+  name: helm-arc-app
   namespace: arc-deploy
   finalizers:
   - resources-finalizer.argocd.argoproj.io
