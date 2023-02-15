@@ -14,7 +14,7 @@ spec:
   project: default
   source:
     path: helm-arc
-    repoURL: https://github.boschdevcloud.com/NYQ5HC/bosch-it-up
+    repoURL: https://github.com/squoc/arc-testing
     targetRevision: HEAD
     helm:
       releaseName: "{{ .Values.spec.OPENSHIFT_NAMESPACE }}"
